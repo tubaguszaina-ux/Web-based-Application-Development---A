@@ -40,10 +40,25 @@
                     <td>6 Km</td>
                     <td>40 Min</td>
                     </tr>
-                    <!-- Tambahkan minimal 2 baris lagi -->
                 </tbody>
             </table>
+
         <li><a href="#Section-2">Record Session</a></li>
+            <form action="/submit" method="post">
+                <p>
+                    <label for="Running-Type">Running Type</label>
+                    <input type="text" id="Running-Type" name="Running-Type" required>
+                </p>
+                <p>
+                    <label for="date">Date Session</label>
+                    <input type="date" id="date" name="date" required>
+                </p>
+                <p>
+                    <label for="duration">Duration (minutes)</label>
+                    <input type="number" id="duration" name="duration" min="1" required>
+                </p>
+                <button type="submit">Submit</button>
+            </form>
       </ul>
     </nav>
   </header>
