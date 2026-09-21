@@ -1,4 +1,4 @@
-# Web Page Plan: Running Log & Schedule
+# Running Log & Schedule
 
 ## Page Description
 This page displays a weekly running schedule, performance targets, and a form to log new running sessions.
@@ -24,4 +24,7 @@ This page displays a weekly running schedule, performance targets, and a form to
 - Duration (mins)
 
 ## Image Used
-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe0zja1s_iHvci8d5raoCvFXJSAptmjSy4xkU-edN-rA&s=10
+- ![alt text](<WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg>)
+
+## Note on AI use
+ - State which parts AI helped with and which parts you did yourself, or write: no AI used.
