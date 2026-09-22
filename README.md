@@ -24,7 +24,7 @@ This page displays a weekly running schedule, performance targets, and a form to
 - Duration (mins)
 
 ## Image Used
-- ![alt text](<WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg>)
+- ![alt text](<1WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg>)
 
 ## Note on AI use
  - State which parts AI helped with and which parts you did yourself, or write: no AI used.
