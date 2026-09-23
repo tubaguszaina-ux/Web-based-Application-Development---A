@@ -4,61 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Running Log & Schedule For ZAINA</title>
+  <link rel="stylesheet" href="gaya.css">
 </head>
 <body>
   <header>
     <h1>Daily Running Log & Schedule</h1>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="#Section-1">Running Schedule</a></li>
-            <table border="2">
-                <caption>Weekly Running Schedule and Goals</caption>
-                <thead>
-                    <tr>
-                    <th scope="col">Daily Run</th>
-                    <th scope="col">Running Type</th>
-                    <th scope="col">kilometers</th>
-                    <th scope="col">Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">Monday</th>
-                    <td>Easy Run</td>
-                    <td>5 Km</td>
-                    <td>30 Min</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">Tuesday</th>
-                    <td>Interval Run</td>
-                    <td>8 Km</td>
-                    <td>45 Min</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">Wednesday</th>
-                    <td>Tempo Run</td>
-                    <td>6 Km</td>
-                    <td>40 Min</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        <li><a href="#Section-2">Record Session</a></li>
-            <form action="/submit" method="post">
-                <p>
-                    <label for="Running-Type">Running Type</label>
-                    <input type="text" id="Running-Type" name="Running-Type" required>
-                </p>
-                <p>
-                    <label for="date">Date Session</label>
-                    <input type="date" id="date" name="date" required>
-                </p>
-                <p>
-                    <label for="duration">Duration (minutes)</label>
-                    <input type="number" id="duration" name="duration" min="1" required>
-                </p>
-                <button type="submit">Submit</button>
-            </form>
+        <li><a href="#section-3">Running Schedule</a></li>
+        <li><a href="#section-4">Record Session</a></li>
       </ul>
     </nav>
   </header>
@@ -66,88 +20,87 @@
   <main>
     <section id="section-3">
       <h2>Weekly Targets & Running History</h2>
-      <table border="2">
+      <table>
+        <caption>Weekly Running Schedule and Goals</caption>
         <thead>
-            <tr>
-                <th scope="col">Day</th>
-                <th scope="col">Time</th>
-                <th scope="col">Distance</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Target</th>
-            </tr>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Time</th>
+            <th scope="col">Distance</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Target</th>
+          </tr>
         </thead>
-
         <tbody>
-            <tr>
-                <th scope="row">Monday</th>
-                <td>06.00</td>
-                <td>3 km</td>
-                <td>25 minutes</td>
-                <td>Easy Run</td>
-            </tr>
-
-            <tr>
-                <th scope="row">Wednesday</th>
-                <td>06.00</td>
-                <td>5 km</td>
-                <td>35 minutes</td>
-                <td>Endurance</td>
-            </tr>
-
-            <tr>
-                <th scope="row">Saturday</th>
-                <td>16.00</td>
-                <td>7 km</td>
-                <td>50 minutes</td>
-                <td>Long Run</td>
-            </tr>
+          <tr>
+            <th scope="row">Monday</th>
+            <td>06.00</td>
+            <td>3 km</td>
+            <td>25 minutes</td>
+            <td>Easy Run</td>
+          </tr>
+          <tr>
+            <th scope="row">Wednesday</th>
+            <td>06.00</td>
+            <td>5 km</td>
+            <td>35 minutes</td>
+            <td>Endurance</td>
+          </tr>
+          <tr>
+            <th scope="row">Saturday</th>
+            <td>16.00</td>
+            <td>7 km</td>
+            <td>50 minutes</td>
+            <td>Long Run</td>
+          </tr>
         </tbody>
       </table>
     </section>
 
     <section id="section-4">
       <h2>Add New Running Session</h2>
-            <form>
-                <div>
-                    <label for="day">DAY:</label>
-                    <input type="text" id="day" name="day" required>
-                </div>
+      <form action="/submit" method="post">
+        <div>
+          <label for="day">Day:</label>
+          <input type="text" id="day" name="day" required>
+        </div>
 
-                <div>
-                    <label for="distance">Distance (km):</label>
-                    <input type="number"
-                          id="distance"
-                          name="distance"
-                          min="1"
-                          max="50"
-                          required>
-                </div>
+        <div>
+          <label for="running-type">Running Type:</label>
+          <input type="text" id="running-type" name="running-type" required>
+        </div>
 
-                <div>
-                    <label for="duration">Duration (minutes):</label>
-                    <input type="number"
-                          id="duration"
-                          name="duration"
-                          min="1"
-                          max="300"
-                          required>
-                </div>
+        <div>
+          <label for="date">Date Session:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
 
-                <button type="submit">Save Activity </button>
-            </form>
+        <div>
+          <label for="distance">Distance (km):</label>
+          <input type="number" id="distance" name="distance" min="1" max="50" required>
+        </div>
+
+        <div>
+          <label for="duration">Duration (minutes):</label>
+          <input type="number" id="duration" name="duration" min="1" max="300" required>
+        </div>
+
+        <button type="submit">Save Activity</button>
+      </form>
     </section>
 
     <figure>
-        <img src="1WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg" 
-        alt="Zaina get medal"
-        width="150" 
-        height="150" 
-        loading="lazy"> 
-        <figcaption>Documentation Event Run</figcaption>
+      <img src="1WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg"
+           alt="Zaina menerima medali setelah mengikuti kegiatan lari"
+           width="150"
+           height="150"
+           loading="lazy">
+      <figcaption>Documentation Event Run</figcaption>
     </figure>
   </main>
 
   <footer>
-    <p>Tubagus Zaina Al Arifin Bahri . 25523227 . 2026</p>
+    <p>Tubagus Zaina Al Arifin Bahri · 25523227 · 2026</p>
   </footer>
 </body>
+</html>
