@@ -3,111 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Running Schedule</title>
-
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet">
+    <title>ZenRun</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html { scroll-padding-top: 70px; }
+    </style>
 </head>
+<body class="bg-light">
 
-<body>
-
-    <h1 class="text-primary text-center mt-5">Daily Running Log & Schedule</h1>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="#section-3">Running Schedule</a></li>
-        <li><a href="#section-4">Record Session</a></li>
-      </ul>
+    <nav class="navbar navbar-expand-md navbar-dark bg-success sticky-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">ZenRun Log</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navMenu" aria-controls="navMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section-3">Running Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section-4">Record Session</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-</body>
 
-    <main>
-        <main>
-        <section id="section-3">
-        <h2>Weekly Targets & Running History</h2>
-        <table border="2" 
-        class="table table-striped table-bordered">
-            <caption>Weekly Running Schedule and Goals</caption>
-            <thead>
-            <tr>
-                <th scope="col">Day</th>
-                <th scope="col">Time</th>
-                <th scope="col">Distance</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Target</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">Monday</th>
-                <td>06.00</td>
-                <td>3 km</td>
-                <td>25 minutes</td>
-                <td>Easy Run</td>
-            </tr>
-            <tr>
-                <th scope="row">Wednesday</th>
-                <td>06.00</td>
-                <td>5 km</td>
-                <td>35 minutes</td>
-                <td>Endurance</td>
-            </tr>
-            <tr>
-                <th scope="row">Saturday</th>
-                <td>16.00</td>
-                <td>7 km</td>
-                <td>50 minutes</td>
-                <td>Long Run</td>
-            </tr>
-            </tbody>
-        </table>
+    <header>
+        <div id="home" class="bg-white border-bottom py-5">
+            <div class="container text-center">
+                <h1 class="text-success fw-bold">Daily Running Log &amp; Schedule</h1>
+                <p class="lead text-secondary mb-0">Plan your week, track every run, and keep improving.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <section id="section-3" class="mb-5">
+            <h2 class="h3 mb-3">Weekly Targets &amp; Running History</h2>
+
+            <div class="table-responsive shadow-sm rounded bg-white">
+                <table class="table table-striped table-hover table-bordered align-middle mb-0">
+                    <caption class="px-3">Weekly Running Schedule and Goals</caption>
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Distance</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Monday</th>
+                            <td>07.00</td>
+                            <td>3 km</td>
+                            <td>18 minutes</td>
+                            <td><span class="badge text-bg-primary">Easy Run</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wednesday</th>
+                            <td>06.00</td>
+                            <td>5 km</td>
+                            <td>35 minutes</td>
+                            <td><span class="badge text-bg-warning">Tempo Run</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Saturday</th>
+                            <td>5.00</td>
+                            <td>10 km</td>
+                            <td>65 minutes</td>
+                            <td><span class="badge text-bg-success">Long Run</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sunday</th>
+                            <td>16.00</td>
+                            <td>4 X 300m</td>
+                            <td>50 minutes</td>
+                            <td><span class="badge text-bg-danger">Interval Run</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="h5 mt-5 mb-3">Logged Sessions</h3>
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <div class="card text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-3 fw-bold text-success" id="total-sessions">0</div>
+                            <div class="text-secondary">Sessions</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-3 fw-bold text-success" id="total-distance">0 km</div>
+                            <div class="text-secondary">Total distance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive shadow-sm rounded bg-white">
+                <table class="table table-striped table-bordered align-middle mb-0">
+                    <caption class="px-3">Your recorded running sessions</caption>
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Run Type</th>
+                            <th scope="col">Distance</th>
+                            <th scope="col">Sessions</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col"><span class="visually-hidden">Remove</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr id="empty-row">
+                            <td colspan="7" class="text-center text-secondary py-4">No sessions recorded yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
-        <section id="section-4">
-        <h2>Add New Running Session</h2>
-        <form action="/submit" method="post">
-            <div class="mb-3">
-            <label for="day" class="form-label">Day:</label>
-            <input type="text" class="form-control" id="day" name="day" required>
+        <section id="section-4" class="mb-5">
+            <h2 class="h3 mb-3">Add New Running Session</h2>
+
+            <div id="form-alert" class="alert alert-success d-none" role="alert">
+                Session saved successfully!
             </div>
 
-            <div class="mb-3">
-            <label for="running-type" class="form-label">Running Type:</label>
-            <input type="text" class="form-control" id="running-type" name="running-type" required>
-            </div>
+            <form id="session-form" class="card card-body shadow-sm needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="day" class="form-label">Day:</label>
+                        <select class="form-select" id="day" name="day" required>
+                            <option value="" selected disabled>Choose a day</option>
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                            <option>Sunday</option>
+                        </select>
+                        <div class="invalid-feedback">Please choose a day.</div>
+                    </div>
 
-            <div class="mb-3">
-            <label for="date" class="form-label">Date Session:</label>
-            <input type="date" class="form-control" id="date" name="date" required>
-            </div>
+                    <div class="col-md-6">
+                        <label for="running-type" class="form-label">Running Type:</label>
+                        <input type="text" class="form-control" id="running-type" name="running-type"
+                               placeholder="e.g. Easy Run" required>
+                        <div class="invalid-feedback">Please enter the running type.</div>
+                    </div>
 
-            <div class="mb-3">
-            <label for="distance" class="form-label">Distance (km):</label>
-            <input type="number" class="form-control" id="distance" name="distance" min="1" max="50" required>
-            </div>
+                    <div class="col-md-3">
+                        <label for="date" class="form-label">Date Session:</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                        <div class="invalid-feedback">Please pick a date.</div>
+                    </div>
 
-            <div class="mb-3">
-            <label for="duration" class="form-label">Duration (minutes):</label>
-            <input type="number" class="form-control" id="duration" name="duration" min="1" max="300" required>
-            </div>
+                    <div class="col-md-3">
+                        <label for="distance" class="form-label">Distance (km):</label>
+                        <input type="number" class="form-control" id="distance" name="distance"
+                               min="1" max="50" step="0.1" required>
+                        <div class="invalid-feedback">Enter a distance between 1 and 50 km.</div>
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Save Activity</button>
-        </form>
+                    <div class="col-md-3">
+                        <label for="sessions" class="form-label">Sessions:</label>
+                        <input type="number" class="form-control" id="sessions" name="sessions"
+                               min="1" max="10" step="1" value="1" required>
+                        <div class="invalid-feedback">Enter 1 to 10 sessions.</div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="duration" class="form-label">Duration (minutes):</label>
+                        <input type="number" class="form-control" id="duration" name="duration"
+                               min="1" max="300" required>
+                        <div class="invalid-feedback">Enter a duration between 1 and 300 minutes.</div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Save Activity</button>
+                    <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+                </div>
+            </form>
         </section>
 
-        <figure>
-            <img src="1WhatsApp Image 2026-09-21 at 10.36.25 PM.jpeg" 
-            alt="Documentation Event Run"
-            width="150" 
-            height="150" 
-            loading="lazy"> 
-            <figcaption>Zaina get a Medal</figcaption>
-        </figure>
+        <div class="d-flex justify-content-center flex-wrap gap-4">
+            <figure class="text-center mb-0">
+                <img src="image/medal.jpeg" class="img-fluid rounded-circle shadow"
+                    alt="Documentation Event Run" width="150" height="150" loading="lazy">
+                <figcaption class="mt-2 text-secondary">Zaina got a medal</figcaption>
+            </figure>
+
+            <figure class="text-center mb-0">
+                <img src="image/event.jpeg" class="img-fluid rounded-circle shadow"
+                    alt="Zaina at the event" width="150" height="150" loading="lazy">
+                <figcaption class="mt-2 text-secondary">Zaina at the event</figcaption>
+            </figure>
+        </div>
     </main>
 
-    <footer>
-        <p>Tubagus Zaina Al Arifin Bahri · 25523227 · 2026</p>
+    <footer class="bg-dark text-white-50 text-center py-3">
+        <p class="mb-0">Tubagus Zaina Al Arifin Bahri · 25523227 · 2026</p>
     </footer>
-    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const STORAGE_KEY = "running-sessions";
+        const form = document.getElementById("session-form");
+        const body = document.getElementById("history-body");
+        const alertBox = document.getElementById("form-alert");
+
+        function loadSessions() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveSessions(sessions) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
+            } catch (e) { /* storage unavailable: list still works for this visit */ }
+        }
+
+        function cell(text) {
+            const td = document.createElement("td");
+            td.textContent = text;
+            return td;
+        }
+
+        function render(sessions) {
+            body.innerHTML = "";
+            if (sessions.length === 0) {
+                body.innerHTML = '<tr id="empty-row"><td colspan="7" class="text-center text-secondary py-4">No sessions recorded yet.</td></tr>';
+            }
+            sessions.forEach((s, i) => {
+                const tr = document.createElement("tr");
+                tr.append(cell(s.date), cell(s.day), cell(s.type), cell(s.distance + " km"), cell(s.sessions || 1), cell(s.duration + " minutes"));
+                const td = document.createElement("td");
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn-sm btn-outline-danger";
+                btn.textContent = "Delete";
+                btn.addEventListener("click", () => {
+                    sessions.splice(i, 1);
+                    saveSessions(sessions);
+                    render(sessions);
+                });
+                td.appendChild(btn);
+                tr.appendChild(td);
+                body.appendChild(tr);
+            });
+            const total = sessions.reduce((sum, s) => sum + s.distance, 0);
+            document.getElementById("total-sessions").textContent = sessions.reduce((sum, s) => sum + (s.sessions || 1), 0);
+            document.getElementById("total-distance").textContent = Math.round(total * 10) / 10 + " km";
+        }
+
+        let sessions = loadSessions();
+        render(sessions);
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (!form.checkValidity()) {
+                form.classList.add("was-validated");
+                return;
+            }
+            sessions.push({
+                day: form.day.value,
+                type: form["running-type"].value.trim(),
+                date: form.date.value,
+                distance: parseFloat(form.distance.value),
+                sessions: parseInt(form.sessions.value, 10),
+                duration: parseInt(form.duration.value, 10)
+            });
+            saveSessions(sessions);
+            render(sessions);
+            form.reset();
+            form.sessions.value = 1;
+            form.classList.remove("was-validated");
+            alertBox.classList.remove("d-none");
+            setTimeout(() => alertBox.classList.add("d-none"), 3000);
+        });
+
+        form.addEventListener("reset", () => form.classList.remove("was-validated"));
+    </script>
+</body>
 </html>
