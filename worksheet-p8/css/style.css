@@ -262,8 +262,10 @@ ul {
 
 /* ===== Kaki ===== */
 .kaki {
-  padding-block: 1rem 2.5rem;
-  color: var(--tinta-pudar);
+  padding-block: 1.25rem;
+  border-top: 6px solid var(--sorot);
+  background: var(--tinta);
+  color: #d5deec;
   font-size: 0.9rem;
 }
 
@@ -278,7 +280,9 @@ ul {
 
 .tabel-kaki tbody td {
   border-bottom: 0;
-  color: var(--tinta);
+  color: #f4f7fb;
+  text-align: center;
+  font-weight: 500;
 }
 
 @media (max-width: 36rem) {
