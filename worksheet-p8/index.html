@@ -1,91 +1,104 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil - Tubagus Zaina Al Arifin Bahri</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        html { scroll-padding-top: 70px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="judul-halaman">Profil Mahasiswa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">Profil Saya</h1>
-      <nav>
-        <ul>
-          <li><a href="#tentang">Tentang</a></li>
-          <li><a href="#keahlian">Keahlian</a></li>
-          <li><a href="#proyek">Proyek</a></li>
-          <li><a href="#kontak">Kontak</a></li>
-        </ul>
-      </nav>
+  <header class="hero">
+    <div class="wadah">
+      <p class="hero-meta">Mahasiswa Informatika · Universitas Islam Indonesia</p>
+      <h1 id="nama" class="hero-nama">Tubagus Zaina Al Arifin Bahri</h1>
+      <p id="peran" class="hero-peran">Mahasiswa Informatika</p>
+      <p id="perkenalan" class="hero-perkenalan">Saya adalah seorang mahasiswa informatika yang tertarik dengan pengembangan web dan teknologi informasi.</p>
     </div>
   </header>
 
-  <main class="container">
+  <main class="wadah isi">
+    <div class="kolom-samping">
+      <section class="panel" aria-labelledby="judul-profil">
+        <h2 id="judul-profil">Profil</h2>
+        <table class="tabel tabel-profil">
+          <tbody>
+            <tr>
+              <th scope="row">Nama</th>
+              <td id="tabel-nama">Tubagus Zaina Al Arifin Bahri</td>
+            </tr>
+            <tr>
+              <th scope="row">Pekerjaan</th>
+              <td id="tabel-peran">Mahasiswa Informatika</td>
+            </tr>
+            <tr>
+              <th scope="row">Hobi</th>
+              <td><ul id="daftar-hobi" class="chip-daftar">pelari, programmer, gamer</ul></td>
+            </tr>
+            <tr>
+              <th scope="row">Jumlah proyek</th>
+              <td id="jumlah-proyek"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-    <section id="tentang" class="card hero-section">
-      <div class="profile-header">
-        <div class="avatar">TZ</div>
-        <div class="profile-info">
-          <h2>Tubagus Zaina Al Arifin Bahri</h2>
-          <p class="role">Mahasiswa Informatika & Web Developer</p>
-          <p class="meta">NIM: 25523227 | Kelas: C | SIF302 - PABW</p>
+      <section class="panel" aria-labelledby="judul-keahlian">
+        <h2 id="judul-keahlian">Keahlian</h2>
+        <p id="keahlian-ringkas" class="keahlian-ringkas">Frontend Development</p>
+        <ul id="daftar-keahlian" class="chip-daftar">
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="panel panel-proyek" aria-labelledby="judul-proyek">
+      <div class="proyek-kepala">
+        <h2 id="judul-proyek">Daftar proyek</h2>
+        <div class="filter" role="group" aria-label="Saring proyek">
+          <button type="button" class="filter-tombol" data-filter="semua" aria-pressed="true">Semua</button>
+          <button type="button" class="filter-tombol" data-filter="selesai" aria-pressed="false">Selesai</button>
+          <button type="button" class="filter-tombol" data-filter="berjalan" aria-pressed="false">Berjalan</button>
         </div>
       </div>
-      <p class="bio">
-        Selamat datang di halaman profil saya. Halaman ini dikembangkan untuk mengolah dan menguji data identitas, keahlian, serta proyek menggunakan konsep JavaScript ES6+ modern secara dinamis.
-      </p>
-    </section>
-
-    <section id="keahlian" class="card">
-      <h3>Daftar Keahlian</h3>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Git & GitHub</li>
-      </ul>
-    </section>
-
-    <section id="proyek" class="card">
-      <h3>Daftar Proyek</h3>
-      <div class="project-grid">
-        <article class="project-card">
-          <h4>Halaman Profil Interaktif</h4>
-          <p class="project-meta">Tahun: 2026 | Status: Selesai | Kategori: Web</p>
-          <p>Pengembangan halaman profil interaktif menggunakan struktur JavaScript modern.</p>
-        </article>
-        <article class="project-card">
-          <h4>Katalog Produk UMKM</h4>
-          <p class="project-meta">Tahun: 2026 | Status: Dalam Proses | Kategori: Web</p>
-          <p>Aplikasi web untuk menampilkan produk-produk usaha mikro kecil dan menengah.</p>
-        </article>
-        <article class="project-card">
-          <h4>Aplikasi Catatan Keuangan</h4>
-          <p class="project-meta">Tahun: 2025 | Status: Selesai | Kategori: App</p>
-          <p>Sistem pencatatan keuangan harian berbasis JavaScript.</p>
-        </article>
+      <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
+      <div class="tabel-gulir">
+        <table class="tabel tabel-proyek">
+          <thead>
+            <tr>
+              <th scope="col">Nama proyek</th>
+              <th scope="col">Deskripsi</th>
+              <th scope="col">Tahun</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="daftar-proyek"></tbody>
+        </table>
       </div>
     </section>
-
-    <section id="kontak" class="card">
-      <h3>Kontak & Informasi</h3>
-      <p>Lokasi: Yogyakarta, DI Yogyakarta</p>
-      <p>Status: Mahasiswa Informatika</p>
-    </section>
-
+      <section id="kontak" class="card">
+        <h3>Kontak & Informasi</h3>
+        <p>Lokasi: Yogyakarta, DI Yogyakarta</p>
+        <p>Status: Mahasiswa Informatika</p>
+      </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Tubagus Zaina Al Arifin Bahri. Tugas Pertemuan 8 PABW.</p>
+  <footer class="kaki">
+    <div class="wadah">
+      <table class="tabel tabel-kaki">
+        <tbody>
+          <tr>
+            <td>PABW - Tubagus Zaina Al Arifin Bahri - 2025</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </footer>
 
-  <script type="module" src="js/app.js"></script> 
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
