@@ -2,7 +2,9 @@
 const profil = {
   nama: "Tubagus Zaina Al Arifin Bahri",
   peran: "Mahasiswa Informatika",
-  hobi: "Lari",
+  hobi: ["pelari", "programmer", "gamer"],
+  perkenalan: "Saya adalah seorang mahasiswa informatika yang tertarik dengan pengembangan web dan teknologi informasi.",
+  bidang: "Frontend Development",
   keahlian: [
     "HTML",
     "CSS",
@@ -10,7 +12,7 @@ const profil = {
   ],
 };
 
-const kalimat = `Nama saya ${profil.nama}, saya ${profil.peran}, hobi saya adalah ${profil.hobi}`;
+const kalimat = `Nama saya ${profil.nama}, saya ${profil.peran}, hobi saya adalah ${profil.hobi.join(", ")}`;
 
 console.log(kalimat);
 console.log(profil.keahlian);
@@ -155,6 +157,30 @@ tombolFilter.forEach((tombol) => {
 });
 
 tampilkanProyek();
+
+// Identitas halaman dirender dari data (B) - ditulis sekali, dipakai di banyak tempat
+function isiTeks(selector, teks) {
+  const elemen = document.querySelector(selector);
+  if (elemen) elemen.textContent = teks;
+}
+
+function buatDaftarChip(daftar) {
+  return daftar.map((isi) => {
+    const item = document.createElement("li");
+    item.textContent = isi;
+    return item;
+  });
+}
+
+document.title = `${profil.nama} - Profil Mahasiswa`;
+isiTeks("#nama", profil.nama);
+isiTeks("#peran", profil.peran);
+isiTeks("#perkenalan", profil.perkenalan);
+isiTeks("#tabel-nama", profil.nama);
+isiTeks("#tabel-peran", profil.peran);
+isiTeks("#keahlian-ringkas", profil.bidang ?? "-");
+document.querySelector("#daftar-hobi")?.replaceChildren(...buatDaftarChip(profil.hobi));
+document.querySelector("#daftar-keahlian")?.replaceChildren(...buatDaftarChip(profil.keahlian));
 
 // Debugging JavaScript (E)
 // undefined
