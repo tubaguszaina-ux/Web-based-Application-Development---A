@@ -66,6 +66,25 @@
         </div>
       </div>
       <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
+      <form id="form-proyek" class="form-proyek">
+        <h3>Tambah proyek</h3>
+        <div class="form-proyek-grid">
+          <label>
+            Nama proyek
+            <input name="judul" type="text" required maxlength="100">
+          </label>
+          <label>
+            Tahun
+            <input name="tahun" type="number" required min="1900" max="9999" value="2026">
+          </label>
+          <label class="form-proyek-deskripsi">
+            Deskripsi
+            <textarea name="deskripsi" required maxlength="500" rows="3"></textarea>
+          </label>
+        </div>
+        <button class="tombol-tambah" type="submit">Tambah proyek</button>
+        <p id="pesan-proyek" class="pesan-proyek" aria-live="polite"></p>
+      </form>
       <div class="tabel-gulir">
         <table class="tabel tabel-proyek">
           <thead>
@@ -73,7 +92,6 @@
               <th scope="col">Nama proyek</th>
               <th scope="col">Deskripsi</th>
               <th scope="col">Tahun</th>
-              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody id="daftar-proyek"></tbody>
@@ -97,6 +115,7 @@
           </tr>
         </tbody>
       </table>
+
     </div>
   </footer>
 

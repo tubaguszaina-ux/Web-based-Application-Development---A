@@ -108,6 +108,8 @@ if (!badanTabelProyek || !jumlahProyek || !hasilFilter) {
   throw new Error("Elemen daftar proyek tidak ditemukan.");
 }
 
+let filterAktifSaatIni = "semua";
+
 function tampilkanProyek(filterAktif = "semua") {
   const proyekDitampilkan = daftarProyek.filter((proyek) => {
     if (filterAktif === "selesai") return proyek.selesai;
@@ -147,6 +149,7 @@ tombolFilter.forEach((tombol) => {
   tombol.addEventListener("click", () => {
     const filterAktif = tombol.dataset.filter;
 
+    filterAktifSaatIni = filterAktif;
     tombolFilter.forEach((item) => {
       item.setAttribute("aria-pressed", String(item === tombol));
     });
@@ -169,6 +172,14 @@ const nama = document.querySelector("#nama");
 if (nama) {
     console.log(nama.textContent);
 }
+
+const tombol = document.querySelector("#tombol-simpan"); 
+if (tombol) {
+  tombol.addEventListener("click", () => {
+  });
+}
+
+console.log("Diklik");
 
 // input still string
 const inputAngka = document.querySelector("#angka");
