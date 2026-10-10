@@ -101,6 +101,23 @@ const totalProyek = daftarProyek.reduce(
 
 console.log(totalProyek);
 
+// sort pada salinan: daftarProyek asli tidak berubah (D)
+const proyekUrutTahun = [...daftarProyek].sort((a, b) => a.tahun - b.tahun);
+
+console.table(proyekUrutTahun);
+console.log(daftarProyek[0].judul);      // tetap "Halaman Profil"
+console.log(proyekUrutTahun[0].judul);   // "Aplikasi Catatan Keuangan" (2025)
+
+// Salin objek: dengan dan tanpa { ...profil } (F.3)
+const salinanDangkal = { ...profil };
+salinanDangkal.nama = "Nama Percobaan";
+console.log(profil.nama);                // tetap asli, karena disalin
+
+const hanyaPenunjuk = profil;            // tanpa tiga titik: hanya menunjuk objek yang sama
+hanyaPenunjuk.peran = "Peran Percobaan";
+console.log(profil.peran);               // ikut berubah!
+hanyaPenunjuk.peran = "Mahasiswa Informatika"; // kembalikan agar halaman tidak terpengaruh
+
 const badanTabelProyek = document.querySelector("#daftar-proyek");
 const jumlahProyek = document.querySelector("#jumlah-proyek");
 const hasilFilter = document.querySelector("#hasil-filter");
