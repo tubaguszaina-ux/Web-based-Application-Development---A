@@ -145,9 +145,13 @@ function tampilkanProyek(filterAktif = "semua") {
     : `Menampilkan ${proyekDitampilkan.length} proyek ${filterAktif}.`;
 }
 
+// let: nilainya berubah setiap kali tombol filter diklik
+let filterSaatIni = "semua";
+
 tombolFilter.forEach((tombol) => {
   tombol.addEventListener("click", () => {
     const filterAktif = tombol.dataset.filter;
+    filterSaatIni = filterAktif;
 
     tombolFilter.forEach((item) => {
       item.setAttribute("aria-pressed", String(item === tombol));
