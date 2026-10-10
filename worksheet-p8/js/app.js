@@ -1,209 +1,181 @@
-// javascript (A)
+// ===================== LEMBAR A - Sambungkan skrip =====================
+console.log("A: app.js terhubung");
+
+
+// ===================== LEMBAR B - Data sebagai variabel =====================
 const profil = {
   nama: "Tubagus Zaina Al Arifin Bahri",
   peran: "Mahasiswa Informatika",
-  hobi: "Running, Programming, Gaming",
-  keahlian: [
-    "HTML",
-    "CSS",
-    "JavaScript",
-  ],
+  perkenalan: "Saya mahasiswa informatika yang tertarik dengan pengembangan web.",
+  bidang: "Frontend Development",
+  hobi: ["pelari", "programmer", "gamer"],
+  keahlian: ["HTML", "CSS", "JavaScript"],
 };
 
-const kalimat = `Nama saya ${profil.nama}, saya ${profil.peran}, hobi saya adalah ${profil.hobi}`;
+let filterSaatIni = "semua"; // let: nilainya berubah saat tombol filter diklik
 
-console.log(kalimat);
-console.log(profil.keahlian);
+console.log(`B: Nama saya ${profil.nama}, saya ${profil.peran}.`); 
+console.log("B:", profil.alamat?.kota);    
+console.log("B:", profil.bidang ?? "-");     
+console.log("B:", 0 === "");                  
 
-// fungsi deklarasi (B)
-// first function declaration
-function buatPerkenalan({
-   nama, peran
-  }) {
-  return `Halo, nama saya ${nama} - Saya seorang ${peran}.`;
-} 
+function isiTeks(selector, teks) {
+  const elemen = document.querySelector(selector);
+  if (elemen) elemen.textContent = teks;
+}
 
-// second function declaration
-const formatKeahlian = (daftar) => daftar.join(" . ");
+function buatDaftar(selector, daftar) {
+  const ul = document.querySelector(selector);
+  ul?.replaceChildren(
+    ...daftar.map((isi) => {
+      const li = document.createElement("li");
+      li.textContent = isi;
+      return li;
+    })
+  );
+}
 
-console.log(buatPerkenalan(profil));
-console.log((formatKeahlian(profil.keahlian)));
+document.title = `${profil.nama} - Profil Mahasiswa`;
+isiTeks("#nama", profil.nama);
+isiTeks("#peran", profil.peran);
+isiTeks("#perkenalan", profil.perkenalan);
+isiTeks("#tabel-nama", profil.nama);
+isiTeks("#tabel-peran", profil.peran);
+isiTeks("#keahlian-ringkas", profil.bidang);
+buatDaftar("#daftar-hobi", profil.hobi);
+buatDaftar("#daftar-keahlian", profil.keahlian);
 
-// Dua fungsi murni (C)
-console.log(buatPerkenalan({
-  nama: "Zena",
-  peran: "pelari kalcer"
-}));
 
-console.log(formatKeahlian([
-  "Easy run", 
-  "Interval run", 
-  "Tempo run", 
-  "Long run"
-]));
+// ===================== LEMBAR C - Dua fungsi murni =====================
+function buatPerkenalan({ nama, peran = "mahasiswa" }) {
+  return `Halo, nama saya ${nama} - saya seorang ${peran}.`;
+}
 
-// Array of objects (D)
-// console.table
+function formatKeahlian(daftar, pemisah = ", ") {
+  return daftar.join(pemisah);
+}
+
+console.log("C:", buatPerkenalan(profil));
+console.log("C:", buatPerkenalan({ nama: "Zena", peran: "pelari" }));
+console.log("C:", formatKeahlian(profil.keahlian));
+console.log("C:", formatKeahlian(["Easy run", "Tempo run"], " . "));
+
+
+// ===================== LEMBAR D - Array of object dan array methods =====================
 const daftarProyek = [
-  {
-    judul: "Halaman Profil",
-    deskripsi: "web informasi biodata pribadi, keahlian, hoby.",
-    tahun: 2026,
-    selesai: true
-  },
-  {
-    judul: "Katalog Produk",
-    deskripsi: "Katalog Barang Jualan UMKM.",
-    tahun: 2026,
-    selesai: false 
-  },
-  {
-    judul: "Aplikasi Catatan Keuangan",
-    deskripsi: "Aplikasi sederhana untuk mencatat pemasukan dan pengeluaran harian.",
-    tahun: 2025,
-    selesai: false
-  },
-  {
-    judul: "Website FAQ",
-    deskripsi: "Halaman tanya jawabuntuk pengguna menemukan informasi.",
-    tahun: 2025,
-    selesai: true
-  }
+  { judul: "Halaman Profil", deskripsi: "Web biodata pribadi.", tahun: 2026, selesai: true },
+  { judul: "Katalog Produk", deskripsi: "Katalog barang jualan UMKM.", tahun: 2026, selesai: false },
+  { judul: "Aplikasi Catatan Keuangan", deskripsi: "Mencatat pemasukan dan pengeluaran harian.", tahun: 2025, selesai: false },
+  { judul: "Website FAQ", deskripsi: "Halaman tanya jawab untuk pengguna.", tahun: 2025, selesai: true },
 ];
 
-console.table(daftarProyek);
+console.table(daftarProyek);                                                    
+console.table(daftarProyek.filter((p) => p.selesai));                           
+console.table(daftarProyek.find((p) => p.judul === "Katalog Produk"));          
+console.log("D:", daftarProyek.map((p) => p.judul));                            
 
-// filter()
-const selesai = daftarProyek.filter((proyek) => proyek.selesai);
+const totalProyek = daftarProyek.reduce((jumlah) => jumlah + 1, 0);             
+console.log("D: total =", totalProyek);
 
-console.table(selesai);
+const urutTahun = [...daftarProyek].sort((a, b) => a.tahun - b.tahun);          
+console.log("D:", daftarProyek[0].judul, "(asli) |", urutTahun[0].judul, "(salinan)");
 
-// find()
-const katalog = daftarProyek.find(
-  (proyek) => proyek.judul === "Katalog Produk"
-);
-
-console.table(katalog);
-
-// map()
-const judulProyek = daftarProyek.map(
-  (proyek) => proyek.judul
-);
-
-console.log(judulProyek);
-
-// reduce()
-const totalProyek = daftarProyek.reduce(
-  (total, proyek) => total + 1, 0
-);
-
-console.log(totalProyek);
-
-const badanTabelProyek = document.querySelector("#daftar-proyek");
-const jumlahProyek = document.querySelector("#jumlah-proyek");
+const badanTabel = document.querySelector("#daftar-proyek");
 const hasilFilter = document.querySelector("#hasil-filter");
-const tombolFilter = document.querySelectorAll(".filter-tombol");
 const formProyek = document.querySelector("#form-proyek");
 const pesanProyek = document.querySelector("#pesan-proyek");
 
-if (!badanTabelProyek || !jumlahProyek || !hasilFilter || !formProyek || !pesanProyek) {
-  throw new Error("Elemen daftar proyek tidak ditemukan.");
+function buatBaris(proyek) {
+  const baris = document.createElement("tr");
+  const nama = document.createElement("th");
+  nama.scope = "row";
+  nama.textContent = proyek.judul;
+  const deskripsi = document.createElement("td");
+  deskripsi.textContent = proyek.deskripsi;
+  const tahun = document.createElement("td");
+  tahun.textContent = proyek.tahun;
+  baris.append(nama, deskripsi, tahun);
+  return baris;
 }
 
-let filterAktifSaatIni = "semua";
-
-function tampilkanProyek(filterAktif = "semua") {
-  const proyekDitampilkan = daftarProyek.filter((proyek) => {
-    if (filterAktif === "selesai") return proyek.selesai;
-    if (filterAktif === "berjalan") return !proyek.selesai;
+function tampilkanProyek(filter = "semua") {
+  const tampil = daftarProyek.filter((p) => {
+    if (filter === "selesai") return p.selesai;
+    if (filter === "berjalan") return !p.selesai;
     return true;
   });
-
-  badanTabelProyek.replaceChildren(
-    ...proyekDitampilkan.map((proyek) => {
-      const baris = document.createElement("tr");
-      const namaProyek = document.createElement("th");
-      const deskripsiProyek = document.createElement("td");
-      const tahunProyek = document.createElement("td");
-      const statusProyek = document.createElement("td");
-      const labelStatus = document.createElement("span");
-
-      namaProyek.scope = "row";
-      namaProyek.textContent = proyek.judul;
-      deskripsiProyek.textContent = proyek.deskripsi;
-      tahunProyek.textContent = proyek.tahun;
-      labelStatus.className = `status status--${proyek.selesai ? "selesai" : "berjalan"}`;
-      labelStatus.textContent = proyek.selesai ?"Selesai" : "Berjalan";
-      statusProyek.append(labelStatus);
-      baris.append(namaProyek, deskripsiProyek, tahunProyek, statusProyek);
-
-      return baris;
-    })
-  );
-
-  jumlahProyek.textContent = daftarProyek.length;
-  hasilFilter.textContent = filterAktif === "semua"
-    ? ""
-    : `Menampilkan ${proyekDitampilkan.length} proyek ${filterAktif}.`;
+  badanTabel?.replaceChildren(...tampil.map(buatBaris));
+  isiTeks("#jumlah-proyek", daftarProyek.length);
+  if (hasilFilter) {
+    hasilFilter.textContent = filter === "semua" ? "" : `Menampilkan ${tampil.length} proyek ${filter}.`;
+  }
 }
 
-tombolFilter.forEach((tombol) => {
+document.querySelectorAll(".filter-tombol").forEach((tombol) => {
   tombol.addEventListener("click", () => {
-    const filterAktif = tombol.dataset.filter;
-
-    filterAktifSaatIni = filterAktif;
-    tombolFilter.forEach((item) => {
-      item.setAttribute("aria-pressed", String(item === tombol));
+    filterSaatIni = tombol.dataset.filter;
+    document.querySelectorAll(".filter-tombol").forEach((t) => {
+      t.setAttribute("aria-pressed", String(t === tombol));
     });
-    tampilkanProyek(filterAktif);
+    tampilkanProyek(filterSaatIni);
   });
 });
 
-formProyek.addEventListener("submit", (event) => {
+formProyek?.addEventListener("submit", (event) => {
   event.preventDefault();
+  const data = new FormData(formProyek);
+  const tahun = Number(data.get("tahun")); 
+  const judul = String(data.get("judul")).trim();
+  const deskripsi = String(data.get("deskripsi")).trim();
 
-  const dataForm = new FormData(formProyek);
-  const proyekBaru = {
-    judul: dataForm.get("judul").trim(),
-    deskripsi: dataForm.get("deskripsi").trim(),
-    tahun: Number(dataForm.get("tahun")),
-    selesai: dataForm.get("status") === "selesai",
-  };
-
-  daftarProyek.push(proyekBaru);
-  tampilkanProyek(filterAktifSaatIni);
+  if (judul === "" || deskripsi === "" || Number.isNaN(tahun)) {
+    pesanProyek.textContent = "Isi nama, deskripsi, dan tahun dengan benar.";
+    return;
+  }
+  daftarProyek.push({ judul, deskripsi, tahun, selesai: false });
+  tampilkanProyek(filterSaatIni);
   formProyek.reset();
-  pesanProyek.textContent = `Proyek "${proyekBaru.judul}" berhasil ditambahkan.`;
+  pesanProyek.textContent = `Proyek "${judul}" berhasil ditambahkan.`;
 });
 
 tampilkanProyek();
 
-// Debugging JavaScript (E)
-// undefined
+
+// ===================== LEMBAR E - Membaca galat =====================
+// Kode di bawah aman. Untuk membuat galat: lepas "// " pada SATU blok GALAT,
+// muat ulang, baca pesan dan barisnya di Console, lalu pasang "// " lagi.
+
 const namaTeman = "Zena";
+console.log("E:", namaTeman, typeof namaTemanTeman);
 
-console.log(namaTeman); // output: Zena
-console.log(typeof namaTemanTeman); // output: undefined
+const elemenNama = document.querySelector("#nama");
+if (elemenNama) console.log("E:", elemenNama.textContent);
 
-// Cannot read properties of null
-const nama = document.querySelector("#nama");
+console.log("E:", "10" + 5, Number("10") + 5); 
 
-if (nama) {
-    console.log(nama.textContent);
-}
+// GALAT 1 - ReferenceError: variabel salah tulis
+console.log(namaTemanTeman);
 
-const tombol = document.querySelector("#tombol-simpan"); 
-if (tombol) {
-  tombol.addEventListener("click", () => {
-  });
-}
+// GALAT 2 - TypeError: Cannot read properties of null (id salah, tanpa if)
+const elemenSalah = document.querySelector("#namaa");
+console.log(elemenSalah.textContent);
 
-console.log("Diklik");
+// GALAT 3 - TypeError: Assignment to constant variable
+totalProyek = 5;
 
-// input still string
-const inputAngka = document.querySelector("#angka");
 
-if (inputAngka) {
-  const angka = Number(inputAngka.value);
-  console.log(angka + 5);
-}
+// ===================== LEMBAR F - Periksa satu per satu =====================
+console.table([
+  { periksa: "Judul halaman dari profil", hasil: document.title.includes(profil.nama) },
+  { periksa: "Baris tabel = isi daftarProyek", hasil: badanTabel?.children.length === daftarProyek.length },
+  { periksa: "Data asli tidak berubah setelah sort", hasil: daftarProyek[0].judul === "Halaman Profil" },
+]);
+
+// Salinan objek: dengan { ...objek } aslinya aman, tanpa itu ikut berubah
+const contoh = { nama: "Nabila" };
+const salinan = { ...contoh };
+const penunjuk = contoh;
+salinan.nama = "Salinan";
+console.log("F:", contoh.nama);   
+penunjuk.nama = "Penunjuk";
+console.log("F:", contoh.nama);   

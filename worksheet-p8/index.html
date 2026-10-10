@@ -12,6 +12,7 @@
 </head>
 <body>
   <header class="hero">
+
     <div class="wadah">
       <p class="hero-meta">Mahasiswa Informatika · Universitas Islam Indonesia</p>
       <h1 id="nama" class="hero-nama">Tubagus Zaina Al Arifin Bahri</h1>
@@ -57,6 +58,28 @@
       </section>
     </div>
 
+    <form class="form-proyek" aria-labelledby="judul-form-proyek">
+        <h3 id="judul-form-proyek">Tambah proyek</h3>
+        <div class="form-grid">
+          <div class="field field--lebar">
+            <label for="input-judul">Nama proyek</label>
+            <input id="input-judul" name="judul" type="text" required maxlength="60" placeholder="Contoh: Aplikasi Jadwal Lari">
+          </div>
+          <div class="field field--lebar">
+            <label for="input-deskripsi">Deskripsi</label>
+            <textarea id="input-deskripsi" name="deskripsi" rows="3" required maxlength="160" placeholder="Satu atau dua kalimat tentang proyek ini"></textarea>
+          </div>
+          <div class="field">
+            <label for="input-tahun">Tahun</label>
+            <input id="input-tahun" name="tahun" type="number" required min="2000" max="2100" value="2026" inputmode="numeric">
+          </div>
+        </div>
+        <p class="form-status">Status proyek baru: Berjalan</p>
+        <div class="form-aksi">
+          <button type="button" class="tombol">Tambah proyek</button>
+        </div>
+      </form>
+
     <section class="panel panel-proyek" aria-labelledby="judul-proyek">
       <div class="proyek-kepala">
         <h2 id="judul-proyek">Daftar proyek</h2>
@@ -67,25 +90,6 @@
         </div>
       </div>
       <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
-      <form id="form-proyek" class="form-proyek">
-        <h3>Tambah proyek</h3>
-        <div class="form-proyek-grid">
-          <label>
-            Nama proyek
-            <input name="judul" type="text" required maxlength="100">
-          </label>
-          <label>
-            Tahun
-            <input name="tahun" type="number" required min="1900" max="9999" value="2026">
-          </label>
-          <label class="form-proyek-deskripsi">
-            Deskripsi
-            <textarea name="deskripsi" required maxlength="500" rows="3"></textarea>
-          </label>
-        </div>
-        <button class="tombol-tambah" type="submit">Tambah proyek</button>
-        <p id="pesan-proyek" class="pesan-proyek" aria-live="polite"></p>
-      </form>
       <div class="tabel-gulir">
         <table class="tabel tabel-proyek">
           <thead>
@@ -98,35 +102,7 @@
           <tbody id="daftar-proyek"></tbody>
         </table>
       </div>
-      <form id="form-proyek" class="form-proyek" aria-labelledby="judul-form">
-        <h3 id="judul-form">Tambah proyek</h3>
-        <div class="form-grid">
-          <div class="field field--lebar">
-            <label for="input-judul">Nama proyek</label>
-            <input type="text" id="input-judul" name="judul" required maxlength="60" placeholder="Contoh: Aplikasi Jadwal Lari">
-          </div>
-          <div class="field field--lebar">
-            <label for="input-deskripsi">Deskripsi</label>
-            <textarea id="input-deskripsi" name="deskripsi" rows="3" required maxlength="160" placeholder="Satu atau dua kalimat tentang proyek ini"></textarea>
-          </div>
-          <div class="field">
-            <label for="input-tahun">Tahun</label>
-            <input type="number" id="input-tahun" name="tahun" required min="2000" max="2100" value="2026" inputmode="numeric">
-          </div>
-          <div class="field">
-            <label for="input-status">Status</label>
-            <select id="input-status" name="selesai">
-              <option value="false">Berjalan</option>
-              <option value="true">Selesai</option>
-            </select>
-          </div>
-        </div>
-        <p id="pesan-form" class="pesan-form" role="status" aria-live="polite"></p>
-        <div class="form-aksi">
-          <button type="submit" class="tombol">Tambah proyek</button>
-          <button type="reset" class="tombol tombol--sekunder">Kosongkan</button>
-        </div>
-      </form>
+      
     </section>
       <section id="kontak" class="card">
         <h3>Kontak & Informasi</h3>
