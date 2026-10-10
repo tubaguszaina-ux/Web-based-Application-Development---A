@@ -45,6 +45,22 @@ console.log("B: 0 ?? 'kosong' =", 0 ?? "kosong");            // 0  (|| akan sala
 console.log("B: 0 === '' ?", 0 === "");                      // false, tipe ikut dibandingkan
 console.log("B: '1' + 1 =", "1" + 1, "| Number('1') + 1 =", Number("1") + 1); // "11" vs 2
 
+// B.5b Enam kasus yang paling sering menyesatkan (dibaca sebelum menulis kode)
+console.log("B1: 0 == '' ->", 0 == "", "| 0 === '' ->", 0 === "");   // == mengubah tipe; pakai ===
+console.log("B2: 0 || 'kosong' ->", 0 || "kosong", "| 0 ?? 'kosong' ->", 0 ?? "kosong"); // || salah menganggap 0 kosong
+console.log("B3: profil.alamat?.kota ->", profil.alamat?.kota);        // undefined; tanpa ?. akan TypeError
+const jumlahContoh = 0;
+if (jumlahContoh) { console.log("B4: tidak tercetak, 0 dinilai falsy"); }
+if (jumlahContoh === 0) { console.log("B4: jumlah memang 0 (dibandingkan langsung)"); }
+{
+  var bocor = "var bocor keluar dari blok";   // var tidak dipakai di pekerjaan nyata; ini hanya peragaan
+  let tidakBocor = "let terkurung di blok";
+  console.log("B5:", tidakBocor);
+}
+console.log("B5: di luar blok ->", bocor, "| tidakBocor ->", typeof tidakBocor); // "undefined"
+const nilaiInput = "100";                                              // nilai kolom isian selalu teks
+console.log("B6:", nilaiInput + 1, "| Number ->", Number(nilaiInput) + 1, "| parseInt ->", Number.parseInt(nilaiInput, 10) + 1);
+
 // B.6 Pasang identitas ke halaman (HTML hanya kerangka)
 function isiTeks(selector, teks) {
   const elemen = document.querySelector(selector);
@@ -87,12 +103,31 @@ function formatKeahlian(daftar, pemisah = ", ") {
   return daftar.join(pemisah);
 }
 
+// C.2b Tiga bentuk fungsi, satu kegunaan (berkas ini memakai deklarasi secara konsisten):
+//   deklarasi : function buatSapaan(nama) { return `Halo, ${nama}`; }
+//   expression: const buatSapaan = function (nama) { return `Halo, ${nama}`; };
+//   arrow     : const buatSapaan = (nama) => `Halo, ${nama}`;   // dipakai sebagai callback map/filter
+function buatSapaan(nama) {
+  return `Halo, ${nama}`;
+}
+
+// C.2c Tiga pola parameter: tunggal, nilai bawaan, satu objek
+console.log("C parameter tunggal :", buatSapaan("Ayu"));
+console.log("C nilai bawaan      :", formatKeahlian(["HTML", "CSS"]), "|", formatKeahlian(["HTML", "CSS"], " / "));
+console.log("C satu objek        :", buatPerkenalan({ nama: "Ayu", peran: "mahasiswa" }));
+
+// C.2d Murni vs tidak murni: fungsi di bawah TIDAK murni karena hasilnya bergantung pada
+// variabel di luar dirinya, dan tidak dipakai di halaman. Perbaikannya: kirim nilainya sebagai parameter.
+//   let pengali = 2;  function kalikan(x) { return x * pengali; }   // tidak murni
+//   function kalikan(x, pengali) { return x * pengali; }            // murni
+
 // C.3 Dipanggil dengan argumen berbeda: hasilnya bisa ditebak
 console.log("C:", buatPerkenalan(profil));
 console.log("C:", buatPerkenalan({ nama: "Zena", peran: "pelari kalcer" }));
 console.log("C:", buatPerkenalan({ nama: "Zena" }));          // memakai nilai bawaan "mahasiswa"
 console.log("C:", formatKeahlian(profil.keahlian));
 console.log("C:", formatKeahlian(["Easy run", "Interval run", "Tempo run", "Long run"], " . "));
+console.log("C: aman dipanggil dua kali ->", buatPerkenalan(profil) === buatPerkenalan(profil)); // true
 
 
 /* =====================================================================
@@ -128,6 +163,11 @@ const daftarProyek = [
   },
 ];
 
+// D.1b Membaca nilai: titik, indeks (mulai dari 0), gabungan, dan kurung siku bertulisan
+console.log("D akses:", profil.nama, "|", daftarProyek[0].judul, "|", profil["nama"]);
+console.log("D akses: daftarProyek[0] =", daftarProyek[0]);   // object pertama
+console.log("D akses: daftarProyek['0'] =", daftarProyek["0"]); // tetap jalan, tapi pakai angka: daftarProyek[0]
+
 // D.2 console.table: seluruh isi array tampil sebagai tabel
 console.table(daftarProyek);
 
@@ -139,9 +179,13 @@ console.table(proyekSelesai);
 const katalog = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
 console.table(katalog);
 
+console.log("D: find yang tidak ketemu ->", daftarProyek.find((proyek) => proyek.judul === "Tidak Ada")); // undefined
+
 // D.5 map: mengubah setiap isi (panjang array sama)
 const judulProyek = daftarProyek.map((proyek) => proyek.judul);
 console.log("D:", judulProyek);
+console.log("D: panjang map =", judulProyek.length, "| panjang asli =", daftarProyek.length); // sama
+console.log("D: filter + map untuk menyaring judul selesai ->", proyekSelesai.map((proyek) => proyek.judul));
 
 // D.6 reduce: menghimpun menjadi satu angka
 const totalProyek = daftarProyek.reduce((jumlah) => jumlah + 1, 0);
@@ -294,3 +338,25 @@ function periksaHalaman() {
 }
 
 console.table(periksaHalaman());
+
+// F.1 Satu potong data yang tersimpan sebagai variabel: profil.nama (juga profil.keahlian, daftarProyek).
+//     Kalau isinya berubah, cukup ubah nilainya di Lembar B; judul, hero, dan tabel ikut berubah.
+
+// F.2 let dipakai pada filterSaatIni (Lembar B): nilainya berubah setiap tombol filter diklik.
+console.log("F2: filterSaatIni sekarang =", filterSaatIni);
+
+// F.3 Peragaan { ...objek } vs hanya menunjuk (memakai objek contoh, bukan profil)
+const contoh = { nama: "Ayu", peran: "mahasiswa" };
+const dengan = { ...contoh };       // salinan dangkal: objek baru
+const tanpa = contoh;               // hanya penunjuk ke objek yang sama
+dengan.nama = "Salinan";
+console.log("F3: contoh.nama setelah salinan diubah =", contoh.nama);   // "Ayu" (aman)
+tanpa.nama = "Penunjuk";
+console.log("F3: contoh.nama setelah penunjuk diubah =", contoh.nama);  // "Penunjuk" (ikut berubah!)
+
+// F.4 Cannot read properties of null: periksa (1) apakah id/class sama persis dengan di HTML,
+//     (2) apakah skrip berjalan setelah elemen ada (type="module" sebelum </body>).
+console.log("F4: querySelector('#tidak-ada') ->", document.querySelector("#tidak-ada")); // null
+
+// F.5 Nilai kolom isian bertipe teks: ubah dulu dengan Number() sebelum dijumlahkan.
+console.log("F5:", "2" + "3", "->", Number("2") + Number("3")); // "23" -> 5
