@@ -2,7 +2,9 @@
 const profil = {
   nama: "Tubagus Zaina Al Arifin Bahri",
   peran: "Mahasiswa Informatika",
-  hobi: "Lari",
+  hobi: ["pelari", "programmer", "gamer"],
+  perkenalan: "Saya adalah seorang mahasiswa informatika yang tertarik dengan pengembangan web dan teknologi informasi.",
+  bidang: "Frontend Development",
   keahlian: [
     "HTML",
     "CSS",
@@ -10,7 +12,7 @@ const profil = {
   ],
 };
 
-const kalimat = `Nama saya ${profil.nama}, saya ${profil.peran}, hobi saya adalah ${profil.hobi}`;
+const kalimat = `Nama saya ${profil.nama}, saya ${profil.peran}, hobi saya adalah ${profil.hobi.join(", ")}`;
 
 console.log(kalimat);
 console.log(profil.keahlian);
@@ -99,6 +101,23 @@ const totalProyek = daftarProyek.reduce(
 
 console.log(totalProyek);
 
+// sort pada salinan: daftarProyek asli tidak berubah (D)
+const proyekUrutTahun = [...daftarProyek].sort((a, b) => a.tahun - b.tahun);
+
+console.table(proyekUrutTahun);
+console.log(daftarProyek[0].judul);      // tetap "Halaman Profil"
+console.log(proyekUrutTahun[0].judul);   // "Aplikasi Catatan Keuangan" (2025)
+
+// Salin objek: dengan dan tanpa { ...profil } (F.3)
+const salinanDangkal = { ...profil };
+salinanDangkal.nama = "Nama Percobaan";
+console.log(profil.nama);                // tetap asli, karena disalin
+
+const hanyaPenunjuk = profil;            // tanpa tiga titik: hanya menunjuk objek yang sama
+hanyaPenunjuk.peran = "Peran Percobaan";
+console.log(profil.peran);               // ikut berubah!
+hanyaPenunjuk.peran = "Mahasiswa Informatika"; // kembalikan agar halaman tidak terpengaruh
+
 const badanTabelProyek = document.querySelector("#daftar-proyek");
 const jumlahProyek = document.querySelector("#jumlah-proyek");
 const hasilFilter = document.querySelector("#hasil-filter");
@@ -145,9 +164,13 @@ function tampilkanProyek(filterAktif = "semua") {
     : `Menampilkan ${proyekDitampilkan.length} proyek ${filterAktif}.`;
 }
 
+// let: nilainya berubah setiap kali tombol filter diklik
+let filterSaatIni = "semua";
+
 tombolFilter.forEach((tombol) => {
   tombol.addEventListener("click", () => {
     const filterAktif = tombol.dataset.filter;
+    filterSaatIni = filterAktif;
 
     filterAktifSaatIni = filterAktif;
     tombolFilter.forEach((item) => {
@@ -158,6 +181,30 @@ tombolFilter.forEach((tombol) => {
 });
 
 tampilkanProyek();
+
+// Identitas halaman dirender dari data (B) - ditulis sekali, dipakai di banyak tempat
+function isiTeks(selector, teks) {
+  const elemen = document.querySelector(selector);
+  if (elemen) elemen.textContent = teks;
+}
+
+function buatDaftarChip(daftar) {
+  return daftar.map((isi) => {
+    const item = document.createElement("li");
+    item.textContent = isi;
+    return item;
+  });
+}
+
+document.title = `${profil.nama} - Profil Mahasiswa`;
+isiTeks("#nama", profil.nama);
+isiTeks("#peran", profil.peran);
+isiTeks("#perkenalan", profil.perkenalan);
+isiTeks("#tabel-nama", profil.nama);
+isiTeks("#tabel-peran", profil.peran);
+isiTeks("#keahlian-ringkas", profil.bidang ?? "-");
+document.querySelector("#daftar-hobi")?.replaceChildren(...buatDaftarChip(profil.hobi));
+document.querySelector("#daftar-keahlian")?.replaceChildren(...buatDaftarChip(profil.keahlian));
 
 // Debugging JavaScript (E)
 // undefined
