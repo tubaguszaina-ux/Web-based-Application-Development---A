@@ -98,35 +98,6 @@
           <tbody id="daftar-proyek"></tbody>
         </table>
       </div>
-      <form id="form-proyek" class="form-proyek" aria-labelledby="judul-form">
-        <h3 id="judul-form">Tambah proyek</h3>
-        <div class="form-grid">
-          <div class="field field--lebar">
-            <label for="input-judul">Nama proyek</label>
-            <input type="text" id="input-judul" name="judul" required maxlength="60" placeholder="Contoh: Aplikasi Jadwal Lari">
-          </div>
-          <div class="field field--lebar">
-            <label for="input-deskripsi">Deskripsi</label>
-            <textarea id="input-deskripsi" name="deskripsi" rows="3" required maxlength="160" placeholder="Satu atau dua kalimat tentang proyek ini"></textarea>
-          </div>
-          <div class="field">
-            <label for="input-tahun">Tahun</label>
-            <input type="number" id="input-tahun" name="tahun" required min="2000" max="2100" value="2026" inputmode="numeric">
-          </div>
-          <div class="field">
-            <label for="input-status">Status</label>
-            <select id="input-status" name="selesai">
-              <option value="false">Berjalan</option>
-              <option value="true">Selesai</option>
-            </select>
-          </div>
-        </div>
-        <p id="pesan-form" class="pesan-form" role="status" aria-live="polite"></p>
-        <div class="form-aksi">
-          <button type="submit" class="tombol">Tambah proyek</button>
-          <button type="reset" class="tombol tombol--sekunder">Kosongkan</button>
-        </div>
-      </form>
     </section>
       <section id="kontak" class="card">
         <h3>Kontak & Informasi</h3>
