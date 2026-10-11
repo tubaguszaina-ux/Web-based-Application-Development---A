@@ -58,6 +58,16 @@
       </section>
     </div>
 
+    <section class="panel panel-proyek" aria-labelledby="judul-proyek">
+      <div class="proyek-kepala">
+        <h2 id="judul-proyek">Daftar proyek</h2>
+        <div class="filter" role="group" aria-label="Saring proyek">
+          <button type="button" class="filter-tombol" data-filter="semua" aria-pressed="true">Semua</button>
+          <button type="button" class="filter-tombol" data-filter="selesai" aria-pressed="false">Selesai</button>
+          <button type="button" class="filter-tombol" data-filter="berjalan" aria-pressed="false">Berjalan</button>
+        </div>
+      </div>
+      <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
       <form id="form-proyek" class="form-proyek" aria-labelledby="judul-form">
         <h3 id="judul-form">Tambah proyek</h3>
         <div class="form-grid">
@@ -86,17 +96,6 @@
           <button type="submit" class="tombol">Tambah proyek</button>
         </div>
       </form>
-
-    <section class="panel panel-proyek" aria-labelledby="judul-proyek">
-      <div class="proyek-kepala">
-        <h2 id="judul-proyek">Daftar proyek</h2>
-        <div class="filter" role="group" aria-label="Saring proyek">
-          <button type="button" class="filter-tombol" data-filter="semua" aria-pressed="true">Semua</button>
-          <button type="button" class="filter-tombol" data-filter="selesai" aria-pressed="false">Selesai</button>
-          <button type="button" class="filter-tombol" data-filter="berjalan" aria-pressed="false">Berjalan</button>
-        </div>
-      </div>
-      <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
       <div class="tabel-gulir">
         <table class="tabel tabel-proyek">
           <thead>
