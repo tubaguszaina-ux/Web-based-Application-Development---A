@@ -195,6 +195,6 @@ const contoh = { nama: "Nabila" };
 const salinan = { ...contoh };
 const penunjuk = contoh;
 salinan.nama = "Penunjuk";
-console.log("F:", contoh.nama);   // "Nabila"
+console.log("F:", contoh.nama);   
 penunjuk.nama = "Penunjuk";
-console.log("F:", contoh.nama);   // "Penunjuk" (ikut berubah)
+console.log("F:", contoh.nama);  
