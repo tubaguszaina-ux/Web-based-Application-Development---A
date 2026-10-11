@@ -427,12 +427,6 @@ ul {
   border-color: #b3261e;
 }
 
-.form-status {
-  margin-top: 0.75rem;
-  color: var(--tinta-pudar);
-  font-size: 0.9rem;
-}
-
 .pesan-form {
   margin-top: 0.75rem;
   font-size: 0.95rem;
