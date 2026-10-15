@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="judul-halaman">Profil Mahasiswa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+
+    <div class="wadah">
+      <p class="hero-meta">Mahasiswa Informatika · Universitas Islam Indonesia</p>
+      <h1 id="nama" class="hero-nama">Tubagus Zaina Al Arifin Bahri</h1>
+      <p id="peran" class="hero-peran">Mahasiswa Informatika</p>
+      <p id="perkenalan" class="hero-perkenalan">Saya adalah seorang mahasiswa informatika yang tertarik dengan pengembangan web dan teknologi informasi.</p>
+    </div>
+  </header>
+
+  <main class="wadah isi">
+    <div class="kolom-samping">
+      <section class="panel" aria-labelledby="judul-profil">
+        <h2 id="judul-profil">Profil</h2>
+        <table class="tabel tabel-profil">
+          <tbody>
+            <tr>
+              <th scope="row">Nama</th>
+              <td id="tabel-nama">Tubagus Zaina Al Arifin Bahri</td>
+            </tr>
+            <tr>
+              <th scope="row">Pekerjaan</th>
+              <td id="tabel-peran">Mahasiswa Informatika</td>
+            </tr>
+            <tr>
+              <th scope="row">Hobi</th>
+              <td><ul id="daftar-hobi" class="chip-daftar">pelari, programmer, gamer</ul></td>
+            </tr>
+            <tr>
+              <th scope="row">Jumlah proyek</th>
+              <td id="jumlah-proyek"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel" aria-labelledby="judul-keahlian">
+        <h2 id="judul-keahlian">Keahlian</h2>
+        <p id="keahlian-ringkas" class="keahlian-ringkas">Frontend Development</p>
+        <ul id="daftar-keahlian" class="chip-daftar">
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="panel panel-proyek" aria-labelledby="judul-proyek">
+      <div class="proyek-kepala">
+        <h2 id="judul-proyek">Daftar proyek</h2>
+        <div class="filter" role="group" aria-label="Saring proyek">
+          <button type="button" class="filter-tombol" data-filter="semua" aria-pressed="true">Semua</button>
+          <button type="button" class="filter-tombol" data-filter="selesai" aria-pressed="false">Selesai</button>
+          <button type="button" class="filter-tombol" data-filter="berjalan" aria-pressed="false">Berjalan</button>
+        </div>
+      </div>
+      <p id="hasil-filter" class="hasil-filter" aria-live="polite"></p>
+      <form id="form-proyek" class="form-proyek" aria-labelledby="judul-form">
+        <h3 id="judul-form">Tambah proyek</h3>
+        <div class="form-grid">
+          <div class="field field--lebar">
+            <label for="input-judul">Nama proyek</label>
+            <input type="text" id="input-judul" name="judul" required maxlength="60" placeholder="Contoh: Aplikasi Jadwal Lari">
+          </div>
+          <div class="field field--lebar">
+            <label for="input-deskripsi">Deskripsi</label>
+            <textarea id="input-deskripsi" name="deskripsi" rows="3" required maxlength="160" placeholder="Satu atau dua kalimat tentang proyek ini"></textarea>
+          </div>
+          <div class="field">
+            <label for="input-tahun">Tahun</label>
+            <input type="number" id="input-tahun" name="tahun" required min="2000" max="2100" value="2026" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="input-status">Status</label>
+            <select id="input-status" name="selesai">
+              <option value="false">Berjalan</option>
+              <option value="true">Selesai</option>
+            </select>
+          </div>
+        </div>
+        <p id="pesan-form" class="pesan-form" role="status" aria-live="polite"></p>
+        <div class="form-aksi">
+          <button type="submit" class="tombol">Tambah proyek</button>
+        </div>
+      </form>
+      <div class="tabel-gulir">
+        <table class="tabel tabel-proyek">
+          <thead>
+            <tr>
+              <th scope="col">Nama proyek</th>
+              <th scope="col">Deskripsi</th>
+              <th scope="col">Tahun</th>
+            </tr>
+          </thead>
+          <tbody id="daftar-proyek"></tbody>
+        </table>
+      </div>
+      
+    </section>
+      <section id="kontak" class="card">
+        <h3>Kontak & Informasi</h3>
+        <p>Lokasi: Yogyakarta, Masjid Ulil Albab UII</p>
+        <p>Kontak: 08123456789</p>
+
+      </section>
+    </main>
+
+  <footer class="kaki">
+    <div class="wadah">
+      <table class="tabel tabel-kaki">
+        <tbody>
+          <tr>
+            <td>PABW - Tubagus Zaina Al Arifin Bahri - 2025</td>
+          </tr>
+        </tbody>
+      </table>
+ 
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/dom.js"></script>
+</body>
+</html>
