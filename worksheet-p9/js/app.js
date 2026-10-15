@@ -1,4 +1,4 @@
-// Worksheet P9: data dan fungsi murni, tanpa event listener DOM.
+// Worksheet P9
 export const profil = {
   nama: 'Tubagus Zaina Al Arifin Bahri',
   peran: 'Mahasiswa Informatika',
@@ -23,7 +23,6 @@ export function formatKeahlian(daftar, pemisah = ', ') {
   return daftar.join(pemisah);
 }
 
-// Materi P8 tetap dapat dicoba tanpa mengubah array asli.
 console.table(daftarProyek);
 console.log('map:', daftarProyek.map(p => p.judul));
 console.log('filter:', daftarProyek.filter(p => p.selesai));
