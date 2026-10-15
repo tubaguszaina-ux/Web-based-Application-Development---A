@@ -63,19 +63,19 @@
         <h3 id="judul-form">Tambah Proyek</h3>
         <div class="form-grid">
           <div class="field field--lebar"><label for="input-judul">Nama proyek</label>
-            <input id="input-judul" name="judul" type="text" required maxlength="60" aria-describedby="error-input-judul" placeholder="Contoh: Aplikasi Jadwal Lari">
+            <input id="input-judul" name="judul" type="text" required maxlength="60">
             <small class="pesan-error" id="error-input-judul" aria-live="polite"></small>
           </div>
           <div class="field field--lebar"><label for="input-deskripsi">Deskripsi</label>
-            <textarea id="input-deskripsi" name="deskripsi" required maxlength="160" rows="3" aria-describedby="error-input-deskripsi" placeholder="Deskripsi singkat proyek"></textarea>
+            <textarea id="input-deskripsi" name="deskripsi" required maxlength="160" rows="3"></textarea>
             <small class="pesan-error" id="error-input-deskripsi" aria-live="polite"></small>
           </div>
           <div class="field"><label for="input-tahun">Tahun</label>
-            <input id="input-tahun" name="tahun" type="number" min="2000" max="2100" step="1" required value="2026" aria-describedby="error-input-tahun">
+            <input id="input-tahun" name="tahun" type="number" min="2000" max="2100" step="1" required value="2026" aria-describedby="error-input-tahun" placeholder="pilih tahun">
             <small class="pesan-error" id="error-input-tahun" aria-live="polite"></small>
           </div>
           <div class="field"><label for="input-status">Status</label>
-            <select id="input-status" name="selesai" aria-describedby="error-input-status">
+            <select id="input-status" name="selesai" aria-describedby="error-input-status" placeholder="Pilih status" required value="false">
               <option value="false">Berjalan</option>
               <option value="true">Selesai</option>
             </select>
@@ -102,6 +102,7 @@
   </main>
 
   <footer class="kaki"><div class="wadah">PABW · Tubagus Zaina Al Arifin Bahri · 25523227</div></footer>
+  <script type="module" src="js/app.js"></script>
   <script type="module" src="js/dom.js"></script>
 </body>
 </html>

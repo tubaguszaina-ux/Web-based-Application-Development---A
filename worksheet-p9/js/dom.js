@@ -1,6 +1,6 @@
 import { profil, daftarProyek } from './app.js';
 
-// A. Pilih elemen berdasarkan ID/class yang benar-benar ada di index.html.
+// A
 const nama = document.querySelector('#nama');
 const peran = document.querySelector('#peran');
 const perkenalan = document.querySelector('#perkenalan');
@@ -51,7 +51,7 @@ isiDaftar(daftarHobi, profil.hobi);
 isiDaftar(daftarKeahlian, profil.keahlian);
 document.title = `${profil.nama} | Profil Mahasiswa`;
 
-// B dan D. Semua perubahan daftar melewati satu render(data).
+// B
 let filterAktif = 'semua';
 function buatBaris(proyek) {
   const tr = document.createElement('tr');
@@ -72,7 +72,7 @@ function buatBaris(proyek) {
 }
 
 function render(data) {
-  container.replaceChildren(); // HARUS pertama: tidak ada duplikasi setelah render ulang.
+  container.replaceChildren();
   pesanKosong.hidden = data.length !== 0;
   if (data.length === 0) {
     pesanKosong.textContent = 'Belum ada proyek yang cocok dengan filter ini.';
@@ -94,7 +94,7 @@ function dataTerfilter() {
 }
 function perbaruiTampilan() { render(dataTerfilter()); }
 
-// C. SATU listener di induk tombol, bukan satu per tombol.
+// C
 filterParent.addEventListener('click', event => {
   const button = event.target.closest('button[data-filter]');
   if (!button || !filterParent.contains(button)) return;
@@ -103,7 +103,7 @@ filterParent.addEventListener('click', event => {
   perbaruiTampilan();
 });
 
-// D. Validasi per-field, pesan langsung saat mengetik, dan tombol nonaktif.
+// D
 const fields = [judul, deskripsi, tahun, status];
 const errorElements = new Map(fields.map(field => [field, document.querySelector(`#error-${field.id}`)]));
 
@@ -154,6 +154,5 @@ form.addEventListener('submit', event => {
   pesanForm.textContent = `Proyek "${proyek.judul}" berhasil ditambahkan.`;
 });
 
-// Saat halaman pertama kali dibuka, form belum valid dan proyek langsung terlihat.
 validasiForm();
 perbaruiTampilan();
