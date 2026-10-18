@@ -1,0 +1,36 @@
+{
+  "sumber": "news.json (local file, sample data for P10)",
+  "diperbarui": "2026-10-18",
+  "tersedia": true,
+  "catatan": null,
+  "berita": [
+    {
+      "id": 1,
+      "judul": "Belajar fetch: mengapa 404 tidak dianggap galat",
+      "ringkasan": "fetch hanya menolak Promise saat permintaan gagal dikirim. Status 404 dan 500 tetap dianggap berhasil, jadi response.ok harus dicek.",
+      "kategori": "Web",
+      "tanggal": "2026-10-12"
+    },
+    {
+      "id": 2,
+      "judul": "async/await membuat alur Promise lebih rata",
+      "ringkasan": "Satu blok try/catch cukup untuk menangkap galat dari semua langkah await di dalamnya.",
+      "kategori": "JavaScript",
+      "tanggal": "2026-10-14"
+    },
+    {
+      "id": 3,
+      "judul": "Pemanasan sebelum lari 5 km",
+      "ringkasan": "Lima menit jalan cepat dan gerak dinamis membantu menurunkan risiko cedera pada lari pagi.",
+      "kategori": "Lari",
+      "tanggal": "2026-10-15"
+    },
+    {
+      "id": 4,
+      "judul": "Memisahkan lapisan data dari lapisan tampilan",
+      "ringkasan": "Fungsi pengambil data hanya mengambil dan memeriksa; fungsi render hanya membuat elemen.",
+      "kategori": "Web",
+      "tanggal": "2026-10-17"
+    }
+  ]
+}
